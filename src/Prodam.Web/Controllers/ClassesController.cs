@@ -22,7 +22,8 @@ namespace Prodam.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await this._classRepository.FindAll());
+            var classes = await this._classRepository.GetClassesWithProfessor();
+            return View(classes);
         }
 
         public async Task<IActionResult> Create()

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Prodam.Core.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Prodam.Web.ViewModels
 {
@@ -12,6 +13,8 @@ namespace Prodam.Web.ViewModels
 
         [Required(ErrorMessage = "Campo obrigatório")]
         public Guid ClassId { get; set; }
+
+        public Class Class { get; set; }
 
     }
 }

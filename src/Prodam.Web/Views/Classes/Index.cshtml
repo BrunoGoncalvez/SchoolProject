@@ -37,7 +37,7 @@
                     @Html.DisplayFor(modelItem => item.SchoolSubject)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Professor.Name)
+                    @String.Format("{0} {1}", item.Professor.Name, item.Professor.LastName)
                 </td>
                 <td class="text-right">
                     <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>

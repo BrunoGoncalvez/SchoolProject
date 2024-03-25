@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 using Prodam.Core.Entities;
 using Prodam.Core.Interfaces;
+
 using Prodam.Web.ViewModels;
 
 namespace Prodam.Web.Controllers
@@ -20,7 +22,8 @@ namespace Prodam.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await this._studentRepository.FindAll());
+            var students = await this._studentRepository.GetStudentsWithClass();
+            return View(students);
         }
 
         public async Task<IActionResult> Create()
@@ -50,8 +53,9 @@ namespace Prodam.Web.Controllers
             return View(student);
         }
 
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
+            ViewData["Classes"] = await this._classRepository.FindAll();
             return View();
         }
 
